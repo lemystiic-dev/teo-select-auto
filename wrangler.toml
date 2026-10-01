@@ -1,0 +1,7 @@
+name = "teo-select-auto"
+pages_build_output_dir = "dist/client"
+compatibility_date = "2024-11-13"
+
+[vars]
+VITE_SUPABASE_URL = "https://imcjrgzykocgdiglmfdu.supabase.co"
+VITE_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_bkVUMmkFFDwhgKjB9PnyfQ_9aw7H_H2"
