@@ -1,0 +1,132 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Midnight Gold — luxury pre-owned dealership design system.
+ * Base black #000, warm gold #B9A070, glassmorphism, thin gold borders.
+ * All tokens defined here — never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --shadow-gold: 0 20px 60px -20px oklch(0.72 0.08 78 / 0.35);
+  --shadow-glass: 0 8px 32px 0 oklch(0 0 0 / 0.6);
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Midnight Gold palette */
+  --background: oklch(0 0 0);                       /* #000000 */
+  --foreground: oklch(0.97 0 0);                    /* #F5F5F5 */
+  --card: oklch(0.08 0.005 80);                     /* near-black warm */
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.08 0.005 80);
+  --popover-foreground: oklch(0.97 0 0);
+  --primary: oklch(0.72 0.08 78);                   /* #B9A070 gold */
+  --primary-foreground: oklch(0.08 0.005 80);
+  --primary-hover: oklch(0.66 0.085 76);            /* #A88A58 */
+  --secondary: oklch(0.14 0.005 80);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.14 0.005 80);
+  --muted-foreground: oklch(0.62 0.008 300);        /* #8E8B90 */
+  --accent: oklch(0.72 0.08 78 / 0.12);
+  --accent-foreground: oklch(0.72 0.08 78);
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.97 0 0);
+  --border: oklch(0.72 0.08 78 / 0.25);             /* thin gold border */
+  --input: oklch(0.72 0.08 78 / 0.2);
+  --ring: oklch(0.72 0.08 78 / 0.6);
+  --chart-1: oklch(0.72 0.08 78);
+  --chart-2: oklch(0.66 0.085 76);
+  --chart-3: oklch(0.5 0.06 78);
+  --chart-4: oklch(0.4 0.04 78);
+  --chart-5: oklch(0.9 0.05 78);
+  --sidebar: oklch(0.05 0.003 80);
+  --sidebar-foreground: oklch(0.97 0 0);
+  --sidebar-primary: oklch(0.72 0.08 78);
+  --sidebar-primary-foreground: oklch(0.08 0.005 80);
+  --sidebar-accent: oklch(0.14 0.005 80);
+  --sidebar-accent-foreground: oklch(0.97 0 0);
+  --sidebar-border: oklch(0.72 0.08 78 / 0.25);
+  --sidebar-ring: oklch(0.72 0.08 78 / 0.6);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@utility glass {
+  background: color-mix(in oklab, oklch(0.08 0.005 80) 60%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--color-border);
+}
+
+@utility gold-gradient-text {
+  background: linear-gradient(135deg, oklch(0.85 0.07 82), oklch(0.66 0.085 76));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility hairline {
+  border: 1px solid oklch(0.72 0.08 78 / 0.2);
+}
