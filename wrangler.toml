@@ -7,6 +7,7 @@ main = "@tanstack/react-start/server-entry"
 [assets]
 directory = ".output/public"
 
+# Variabile disponibile ATÂT la build-time (pentru Vite) CÂT ȘI la runtime (pentru Worker)
 [vars]
 VITE_SUPABASE_URL = "https://imcjrgzykocgdiglmfdu.supabase.co"
 VITE_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_bkVUMmkFFDwhgKjB9PnyfQ_9aw7H_H2"
