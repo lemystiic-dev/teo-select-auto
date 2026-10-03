@@ -18,6 +18,7 @@ export function CookieBanner() {
   const acceptAll = () => {
     localStorage.setItem(STORAGE_KEY, "all");
     setIsVisible(false);
+    window.dispatchEvent(new Event("cookies-accepted"));
   };
 
   const acceptNecessary = () => {
