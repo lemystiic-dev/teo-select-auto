@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Calendar, ChevronLeft, ChevronRight, Fuel, Gauge, MessageCircle, Palette, Settings2, ShieldCheck, X, Zap } from "lucide-react";
 import { LoanCalculator } from "@/components/site/LoanCalculator";
+import { trackMetaEvent } from "@/components/site/MetaPixel";
 import { formatMileage, formatPrice } from "@/lib/vehicles";
 import { useVehicleBySlug } from "@/lib/vehicle-api";
 
@@ -45,6 +46,19 @@ function VehicleDetail() {
   const [lightbox, setLightbox] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Meta Pixel: ViewContent când se încarcă o mașină
+  useEffect(() => {
+    if (v) {
+      trackMetaEvent("ViewContent", {
+        content_name: `${v.brand} ${v.model} (${v.year})`,
+        content_ids: [v.slug],
+        content_type: "vehicle",
+        value: v.price,
+        currency: "EUR",
+      });
+    }
+  }, [v]);
 
   if (isLoading) {
     return <div className="mx-auto max-w-2xl px-6 py-32 text-center text-muted-foreground">Se încarcă...</div>;
@@ -277,6 +291,14 @@ function VehicleDetail() {
             </p>
             <a
               href={wa}
+              onClick={() =>
+                trackMetaEvent("Contact", {
+                  content_name: `${v.brand} ${v.model} (${v.year})`,
+                  content_ids: [v.slug],
+                  value: v.price,
+                  currency: "EUR",
+                })
+              }
               target="_blank"
               rel="noreferrer"
               className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-[color:var(--color-primary-hover)]"
@@ -286,6 +308,14 @@ function VehicleDetail() {
             </a>
             <a
               href="tel:+40760323331"
+              onClick={() =>
+                trackMetaEvent("Contact", {
+                  content_name: `${v.brand} ${v.model} (${v.year})`,
+                  content_ids: [v.slug],
+                  value: v.price,
+                  currency: "EUR",
+                })
+              }
               className="mt-3 flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
             >
               Programează vizionare

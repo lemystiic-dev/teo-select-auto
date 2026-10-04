@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { trackMetaEvent } from "./MetaPixel";
 
 export function WhatsAppFloat() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,6 +16,7 @@ export function WhatsAppFloat() {
   return (
     <a
       href={whatsappUrl}
+      onClick={() => trackMetaEvent("Contact")}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactează-ne pe WhatsApp"
