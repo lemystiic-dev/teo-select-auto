@@ -16,6 +16,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
 import { CookieBanner } from "@/components/site/CookieBanner";
 import { MetaPixel } from "@/components/site/MetaPixel";
+import { GoogleAnalytics } from "@/components/site/GoogleAnalytics";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -148,6 +149,7 @@ function RootComponent() {
         <Toaster />
         <CookieBanner />
         <MetaPixel />
+        <GoogleAnalytics />
       </div>
     </QueryClientProvider>
   );
