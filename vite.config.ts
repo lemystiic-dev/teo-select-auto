@@ -4,6 +4,7 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
+import { sitemapPlugin } from "@corentints/tanstack-router-sitemap";
 
 export default defineConfig({
   plugins: [
@@ -12,5 +13,12 @@ export default defineConfig({
     cloudflare({ viteEnvironment: { name: "ssr" } }),
     tanstackStart(),
     viteReact(),
+    sitemapPlugin({
+      baseUrl: "https://teoselectauto.ro",
+      outputPath: "public/sitemap.xml",
+      excludeRoutes: ["/admin", "/admin/*", "/auth"],
+      defaultChangefreq: "weekly",
+      defaultPriority: 0.8,
+    }),
   ],
 });
